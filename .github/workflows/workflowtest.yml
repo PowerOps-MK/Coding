@@ -5,6 +5,8 @@ name: CI/CD
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -36,9 +38,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r ${{ github.workspace }}/Python/requirements.txt
           python -m pip list
-
-      - name: Validate version
-        run: python --version
        
        
       
