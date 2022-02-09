@@ -44,7 +44,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r ${{ github.workspace }}/Python/requirements.txt
-          python -m pip list
+          python -m pip list | grep *spotipy*
        
        
       
