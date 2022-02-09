@@ -36,9 +36,9 @@ jobs:
   
       - name: Validate version
         run: |
-          pythonVersion=(python setup.py --version)
+          echo (python setup.py --version)
           echo "${{ matrix.python-version }}" 
-          echo $pythonVersion
+          
 
       - name: Install dependencies
         run: |
