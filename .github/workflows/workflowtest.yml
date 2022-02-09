@@ -41,7 +41,7 @@ jobs:
         run: |
           python_version=$(python --version)
           echo "Required version is ${{ matrix.python-version }}" 
-          echo "Installed version is" $python_version > output.txt
+          echo "Installed version is" $python_version
 
       # Install Python dependencies
       - name: Install dependencies
@@ -52,7 +52,7 @@ jobs:
       # Run Python script
       - name: Run script
         run: |
-          python ${{ github.workspace }}/Python/test.py
+          python ${{ github.workspace }}/Python/test.py > output.txt
 
       - name: Upload output
         uses: actions/upload-artifact@v2
