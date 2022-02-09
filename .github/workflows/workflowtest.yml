@@ -56,7 +56,7 @@ jobs:
       # Run Python script
       - name: Run script
         run: |
-          python ${{ github.workspace }}/Python/${{ env.script_path > output.txt
+          python ${{ github.workspace }}/Python/${{ env.script_path }} > output.txt
 
       # Upload output artifact
       - name: Upload artifact
