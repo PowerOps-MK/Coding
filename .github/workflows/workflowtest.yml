@@ -47,12 +47,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r ${{ github.workspace }}/Python/requirements.txt
+          python -m pip install -r ${{ github.workspace }}/Python/Spotify/requirements.txt
 
       # Run Python script
       - name: Run script
         run: |
-          python ${{ github.workspace }}/Python/test.py > output.txt
+          python ${{ github.workspace }}/Python/Spotify/test.py > output.txt
 
       # Upload output artifact
       - name: Upload artifact
