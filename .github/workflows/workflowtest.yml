@@ -37,9 +37,8 @@ jobs:
       - name: Validate version
         run: |
           pythonVersion = "hello"
-          print("${{ matrix.python-version }}")  
-          print(pythonVersion)
-        shell: python
+          echo "${{ matrix.python-version }}" 
+          echo $pythonVersion
 
       - name: Install dependencies
         run: |
