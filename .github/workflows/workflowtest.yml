@@ -37,7 +37,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r ${{ github.workspace }}/Python/requirements.txt
-          Python -m pip list
+          python -m pip list
 
       - name: Validate version
         run: python --version
