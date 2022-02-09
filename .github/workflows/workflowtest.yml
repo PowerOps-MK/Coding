@@ -15,7 +15,7 @@ on:
 
 # Set environment variables
 env:
-  script_path: Spotify
+  script_path: "Python/Spotify"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -51,12 +51,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r ${{ github.workspace }}/Python/${{ env.script_path }}/requirements.txt
+          python -m pip install -r ${{ github.workspace }}/${{ env.script_path }}/requirements.txt
 
       # Run Python script
       - name: Run script
         run: |
-          python ${{ github.workspace }}/Python/${{ env.script_path }} > output.txt
+          python ${{ github.workspace }}/${{ env.script_path }} > output.txt
 
       # Upload output artifact
       - name: Upload artifact
