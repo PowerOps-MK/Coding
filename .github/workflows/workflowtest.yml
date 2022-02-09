@@ -47,6 +47,7 @@ jobs:
             $python_version = "1.0"
           else
             python_version=$(python --version)
+          fi
           echo "Required version is ${{ matrix.python-version }}" 
           echo "Installed version is" $python_version
 
