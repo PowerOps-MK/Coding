@@ -32,7 +32,12 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "${{ matrix.python-version }}"
-      
+  
+      - name: Validate version
+        run: |
+          pythonVersion = (python --version)
+          print("The current version is ", pythonVersion "; expected version is ${{ matrix.python }}")      
+          
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
