@@ -36,8 +36,7 @@ jobs:
   
       - name: Validate version
         run: |
-          python --version
-          print("The current version is ${{ matrix.python-version }}")      
+          python --version    
           
       - name: Install dependencies
         run: |
