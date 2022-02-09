@@ -43,7 +43,7 @@ jobs:
       # Checks Python version
       - name: Validate version
         run: |
-          #python_version=$(python --version)
+          set python_version=$(python --version)
           echo "Required version is ${{ matrix.python-version }}" 
           #echo "Installed version is" $python_version
 
