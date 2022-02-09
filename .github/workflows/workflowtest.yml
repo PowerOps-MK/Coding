@@ -52,7 +52,7 @@ jobs:
       # Run Python script
       - name: Run script
         run: |
-          python ${{ github.workspace }}/Python/Spotify/test.py > output.txt
+          python ${{ github.workspace }}/Python/Spotify/__main__.py > output.txt
 
       # Upload output artifact
       - name: Upload artifact
