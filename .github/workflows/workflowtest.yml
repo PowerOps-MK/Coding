@@ -50,6 +50,7 @@ jobs:
           fi
           echo "Required version is ${{ matrix.python-version }}" 
           echo "Installed version is" $python_version
+        shell: bash
 
       # Install Python dependencies
       - name: Install dependencies
