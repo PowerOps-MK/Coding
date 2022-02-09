@@ -38,7 +38,8 @@ jobs:
         run: |
           echo "Required version is ${{ matrix.python-version }}" 
           echo "Installed version is "
-          python --version
+          pythonVersion=$(python --version)
+          echo $pythonVersion
 
       - name: Install dependencies
         run: |
