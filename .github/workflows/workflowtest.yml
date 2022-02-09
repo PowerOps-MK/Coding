@@ -43,7 +43,10 @@ jobs:
       # Checks Python version
       - name: Validate version
         run: |
-          set python_version=$(python --version)
+          if [ "$RUNNER_OS" == "Windows" ]; then
+            $python_version = "1.0"
+          else
+            python_version=$(python --version)
           echo "Required version is ${{ matrix.python-version }}" 
           echo "Installed version is" $python_version
 
