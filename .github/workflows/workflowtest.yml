@@ -51,7 +51,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r ${{ github.workspace }}/Python/Spotify/requirements.txt
+          python -m pip install -r ${{ github.workspace }}/Python/{{ env.script_path }}/requirements.txt
 
       # Run Python script
       - name: Run script
