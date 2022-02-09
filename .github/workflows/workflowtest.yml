@@ -36,7 +36,7 @@ jobs:
   
       - name: Validate version
         run: |
-          pythonVersion = "hello"
+          pythonVersion="hello"
           echo "${{ matrix.python-version }}" 
           echo $pythonVersion
 
