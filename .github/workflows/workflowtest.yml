@@ -54,7 +54,8 @@ jobs:
         run: |
           python ${{ github.workspace }}/Python/test.py > output.txt
 
-      - name: Upload output
+      # Upload output artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: output
