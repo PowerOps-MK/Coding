@@ -57,15 +57,15 @@ jobs:
       # Run Python script
       - name: Run script
         run: |
-          python ${{ github.workspace }}/${{ env.script_path }} > output.txt
+          python ${{ github.workspace }}/${{ env.script_path }}
 
       # Lint the Python script
       - name: Lint with flake8
         run: |        
           # stop the build if there are Python syntax errors or undefined names
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 ${{ github.workspace }}/${{ env.script_path }} --count --select=E9,F63,F7,F82 --show-source --statistics
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+          flake8 ${{ github.workspace }}/${{ env.script_path }} --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics > output.txt
 
       # Upload output artifact
       - name: Upload artifact
@@ -74,5 +74,8 @@ jobs:
           name: output-${{ runner.os }} 
           path: output.txt
 
-       
+      # Test the script artifact
+      - name: Test with pytest
+        run: |
+          pytest 
       
