@@ -1,3 +1,4 @@
 Spotipy
 google-api-python-client
-
+flake8
+pytest
