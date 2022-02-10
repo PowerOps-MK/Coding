@@ -75,7 +75,7 @@ jobs:
           path: output.txt
 
       # Test the script artifact
-      #- name: Test with pytest
-        #run: |
-          #pytest 
+      - name: Test with pytest
+        run: |
+          pytest ${{ github.workspace }}/${{ env.script_path }} --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html 
       
