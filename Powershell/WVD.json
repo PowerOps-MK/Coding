@@ -318,7 +318,7 @@
       "metadata": {
         "description": "Specifies the SecurityType of the virtual machine. It is set as TrustedLaunch to enable UefiSettings. Default: UefiSettings will not be enabled unless this property is set as TrustedLaunch."
       },
-      "defaultValue": "TrustedLaunch"
+      "defaultValue": ""
     },
     "secureBoot": {
       "type": "bool",
@@ -376,7 +376,15 @@
         "uri": "[parameters('customConfigurationParameterUrl')]"
       }
     },
-    "customConfigurationParameter": "[if(empty(parameters('customConfigurationParameterUrl')), variables('postDeploymentCustomConfigurationTemplateProperty'), union(variables('postDeploymentCustomConfigurationTemplateProperty'), variables('postDeploymentCustomConfigurationParameterProperty')))]"  },
+    "customConfigurationParameter": "[if(empty(parameters('customConfigurationParameterUrl')), variables('postDeploymentCustomConfigurationTemplateProperty'), union(variables('postDeploymentCustomConfigurationTemplateProperty'), variables('postDeploymentCustomConfigurationParameterProperty')))]"
+	"securityProfile": {
+      "uefiSettings": {
+        "secureBootEnabled": "[parameters('secureBoot')]",
+        "vTpmEnabled": "[parameters('vTPM')]"
+      },
+      "securityType": "[parameters('securityType')]"
+    }
+  },
   "resources": [
     {
       "apiVersion": "2018-05-01",
@@ -457,13 +465,7 @@
           "adminUsername": "[variables('vmAdministratorUsername')]",
           "adminPassword": "[variables('vmAdministratorPassword')]"
         },
-		"securityProfile": {
-		  "uefiSettings": {
-			"secureBootEnabled": "[parameters('secureBoot')]",
-			"vTpmEnabled": "[parameters('vTPM')]"
-		  },
-		  "securityType": "[parameters('securityType')]"
-		},
+		"securityProfile": "[if(equals(parameters('securityType'), 'TrustedLaunch'), variables('securityProfile'), json('null'))]",
         "storageProfile": {
           "osDisk": {
             "createOption": "FromImage",
