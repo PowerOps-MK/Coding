@@ -376,8 +376,8 @@
         "uri": "[parameters('customConfigurationParameterUrl')]"
       }
     },
-    "customConfigurationParameter": "[if(empty(parameters('customConfigurationParameterUrl')), variables('postDeploymentCustomConfigurationTemplateProperty'), union(variables('postDeploymentCustomConfigurationTemplateProperty'), variables('postDeploymentCustomConfigurationParameterProperty')))]"
-	securityProfile": {
+    "customConfigurationParameter": "[if(empty(parameters('customConfigurationParameterUrl')), variables('postDeploymentCustomConfigurationTemplateProperty'), union(variables('postDeploymentCustomConfigurationTemplateProperty'), variables('postDeploymentCustomConfigurationParameterProperty')))]",
+    "securityProfile": {
       "uefiSettings": {
         "secureBootEnabled": "[parameters('secureBoot')]",
         "vTpmEnabled": "[parameters('vTPM')]"
