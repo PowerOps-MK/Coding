@@ -458,11 +458,11 @@
           "adminPassword": "[variables('vmAdministratorPassword')]"
         },
 		"securityProfile": {
-		  "securityType": "[parameters('securityType')]",
 		  "uefiSettings": {
 			"secureBootEnabled": "[parameters('secureBoot')]",
 			"vTpmEnabled": "[parameters('vTPM')]"
-		  }
+		  },
+		  "securityType": "[parameters('securityType')]"
 		},
         "storageProfile": {
           "osDisk": {
