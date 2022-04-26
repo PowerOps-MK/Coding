@@ -6,7 +6,8 @@
       "type": "string",
       "metadata": {
         "description": "The base URI where artifacts required by this template are located."
-      }
+      },
+      "defaultValue": "https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts/Configuration.zip"
     },
     "availabilityOption": {
       "type": "string",
@@ -33,12 +34,22 @@
         "description": "The number of availability zone to be used when create the VMs."
       },
       "defaultValue": 1,
-      "allowedValues": [ 1, 2, 3 ]
+      "allowedValues": [
+        1,
+        2,
+        3
+      ]
     },
     "vmImageVhdUri": {
       "type": "string",
       "metadata": {
         "description": "URI of the sysprepped image vhd file to be used to create the session host VMs. For example, https://rdsstorage.blob.core.windows.net/vhds/sessionhostimage.vhd"
+      }
+    },
+    "storageAccountResourceGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "The storage account containing the custom VHD."
       }
     },
     "vmGalleryImageOffer": {
@@ -55,24 +66,10 @@
       },
       "defaultValue": ""
     },
-    "vmGalleryImageHasPlan": {
-      "type": "bool",
-      "metadata": {
-        "description": "Whether the VM image has a plan or not"
-      },
-      "defaultValue": false
-    },
     "vmGalleryImageSKU": {
       "type": "string",
       "metadata": {
         "description": "(Required when vmImageType = Gallery) Gallery image SKU."
-      },
-      "defaultValue": ""
-    },
-    "vmGalleryImageVersion": {
-      "type": "string",
-      "metadata": {
-        "description": "(Required when vmImageType = Gallery) Gallery image version."
       },
       "defaultValue": ""
     },
@@ -91,7 +88,11 @@
     },
     "rdshVMDiskType": {
       "type": "string",
-      "allowedValues": [ "Premium_LRS", "StandardSSD_LRS", "Standard_LRS" ],
+      "allowedValues": [
+        "Premium_LRS",
+        "StandardSSD_LRS",
+        "Standard_LRS"
+      ],
       "metadata": {
         "description": "The VM disk type for the VM: HDD or SSD."
       }
@@ -102,20 +103,6 @@
         "description": "The size of the session host VMs."
       },
       "defaultValue": "Standard_A2"
-    },
-    "rdshVmDiskSizeGB": {
-      "type": "int",
-      "metadata": {
-        "description": "The size of the disk on the vm in GB"
-      },
-      "defaultValue": 0
-    },
-    "rdshHibernate": {
-      "type": "bool",
-      "metadata": {
-        "description": "Whether or not the VM is hibernate enabled"
-      },
-      "defaultValue": false
     },
     "enableAcceleratedNetworking": {
       "type": "bool",
@@ -139,14 +126,14 @@
     "vmAdministratorAccountUsername": {
       "type": "string",
       "metadata": {
-        "description": "A username to be used as the virtual machine administrator account. The vmAdministratorAccountUsername and  vmAdministratorAccountPassword parameters must both be provided. Otherwise, domain administrator credentials provided by administratorAccountUsername and administratorAccountPassword will be used."
+        "description": "The virtual machine admin user name. The domain administrator username will be used if this parameter is not provided."
       },
       "defaultValue": ""
     },
     "vmAdministratorAccountPassword": {
       "type": "securestring",
       "metadata": {
-        "description": "The password associated with the virtual machine administrator account. The vmAdministratorAccountUsername and  vmAdministratorAccountPassword parameters must both be provided. Otherwise, domain administrator credentials provided by administratorAccountUsername and administratorAccountPassword will be used."
+        "description": "The virtual machine admin password. The domain administrator password will be used if this parameter is not provided."
       },
       "defaultValue": ""
     },
@@ -265,72 +252,14 @@
     "aadJoin": {
       "type": "bool",
       "metadata": {
-        "description": "IMPORTANT: You can use this parameter for the test purpose only as AAD Join is public preview. True if AAD Join, false if AD join"
+        "description": "True if AAD Join, false if AD join"
       },
       "defaultValue": false
     },
     "intune": {
       "type": "bool",
       "metadata": {
-        "description": "IMPORTANT: Please don't use this parameter as intune enrollment is not supported yet. True if intune enrollment is selected.  False otherwise"
-      },
-      "defaultValue": false
-    },
-    "bootDiagnostics": {
-      "type": "object",
-      "metadata": {
-        "description": "Boot diagnostics object taken as body of Diagnostics Profile in VM creation"
-      },
-      "defaultValue": {
-        "enabled": false
-      }
-    },
-    "userAssignedIdentity": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of user assigned identity that will assigned to the VMs. This is an optional parameter."
-      },
-      "defaultValue": ""
-    },
-    "customConfigurationTemplateUrl": {
-      "type": "string",
-      "metadata": {
-        "description": "ARM template that contains custom configurations to be run after the virtual machines are created."
-      },
-      "defaultValue": ""
-    },
-    "customConfigurationParameterUrl": {
-      "type": "string",
-      "metadata": {
-        "description": "Url to the ARM template parameter file for the customConfigurationTemplateUrl parameter. This input will be used when the template is ran after the VMs have been deployed."
-      },
-      "defaultValue": ""
-    },
-    "SessionHostConfigurationVersion": {
-      "type": "string",
-      "metadata": {
-        "description": "Session host configuration version of the host pool."
-      },
-      "defaultValue": ""
-    },
-    "securityType": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the SecurityType of the virtual machine. It is set as TrustedLaunch to enable UefiSettings. Default: UefiSettings will not be enabled unless this property is set as TrustedLaunch."
-      },
-      "defaultValue": "TrustedLaunch"
-    },
-    "secureBoot": {
-      "type": "bool",
-      "metadata": {
-        "description": "Specifies whether secure boot should be enabled on the virtual machine."
-      },
-      "defaultValue": false
-    },
-    "vTPM": {
-      "type": "bool",
-      "metadata": {
-        "description": "Specifies whether vTPM (Virtual Trusted Platform Module) should be enabled on the virtual machine."
+        "description": "True if intune enrollment is selected.  False otherwise"
       },
       "defaultValue": false
     }
@@ -340,48 +269,18 @@
     "domain": "[if(equals(parameters('domain'), ''), last(split(parameters('administratorAccountUsername'), '@')), parameters('domain'))]",
     "storageAccountType": "[parameters('rdshVMDiskType')]",
     "newNsgName": "[concat(parameters('rdshPrefix'), 'nsg-', parameters('_guidValue'))]",
-    "newNsgDeploymentName": "[concat('NSG-linkedTemplate-', parameters('_guidValue'))]",
     "nsgId": "[if(parameters('createNetworkSecurityGroup'), resourceId('Microsoft.Network/networkSecurityGroups', variables('newNsgName')), parameters('networkSecurityGroupId'))]",
     "isVMAdminAccountCredentialsProvided": "[and(not(equals(parameters('vmAdministratorAccountUsername'), '')), not(equals(parameters('vmAdministratorAccountPassword'), '')))]",
     "vmAdministratorUsername": "[if(variables('isVMAdminAccountCredentialsProvided'), parameters('vmAdministratorAccountUsername'), first(split(parameters('administratorAccountUsername'), '@')))]",
     "vmAdministratorPassword": "[if(variables('isVMAdminAccountCredentialsProvided'), parameters('vmAdministratorAccountPassword'), parameters('administratorAccountPassword'))]",
-    "vmAvailabilitySetResourceId": { "id": "[resourceId('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]" },
-    "planInfoEmpty": "[or(empty(parameters('vmGalleryImageSKU')), empty(parameters('vmGalleryImagePublisher')), empty(parameters('vmGalleryImageOffer')))]",
-    "marketplacePlan": {
-      "name": "[parameters('vmGalleryImageSKU')]",
-      "publisher": "[parameters('vmGalleryImagePublisher')]",
-      "product": "[parameters('vmGalleryImageOffer')]",
-      "version": "[if(empty(parameters('vmGalleryImageVersion')), 'latest', parameters('vmGalleryImageVersion'))]"
-    },
-    "vmPlan": "[if(or(variables('planInfoEmpty'), not(parameters('vmGalleryImageHasPlan'))), json('null'), variables('marketplacePlan'))]",
-    "vmIdentityType": "[if(parameters('aadJoin'), if(not(empty(parameters('userAssignedIdentity'))), 'SystemAssigned, UserAssigned', 'SystemAssigned'), if(not(empty(parameters('userAssignedIdentity'))), 'UserAssigned', 'None'))]",
-    "vmIdentityTypeProperty": {
-      "type": "[variables('vmIdentityType')]"
-    },
-    "vmUserAssignedIdentityProperty": {
-      "userAssignedIdentities": {
-        "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',parameters('userAssignedIdentity'))]": {}
-      }
-    },
-    "vmIdentity": "[if(not(empty(parameters('userAssignedIdentity'))), union(variables('vmIdentityTypeProperty'), variables('vmUserAssignedIdentityProperty')), variables('vmIdentityTypeProperty'))]",
-    "postDeploymentCustomConfigurationTemplateProperty": {
-      "mode": "Incremental",
-      "templateLink": {
-        "uri": "[parameters('customConfigurationTemplateUrl')]",
-        "contentVersion": "1.0.0.0"
-      }
-    },
-    "postDeploymentCustomConfigurationParameterProperty": {
-      "parametersLink": {
-        "uri": "[parameters('customConfigurationParameterUrl')]"
-      }
-    },
-    "customConfigurationParameter": "[if(empty(parameters('customConfigurationParameterUrl')), variables('postDeploymentCustomConfigurationTemplateProperty'), union(variables('postDeploymentCustomConfigurationTemplateProperty'), variables('postDeploymentCustomConfigurationParameterProperty')))]"
+    "vmAvailabilitySetResourceId": {
+      "id": "[resourceId('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]"
+    }
   },
   "resources": [
     {
       "apiVersion": "2018-05-01",
-      "name": "[variables('newNsgDeploymentName')]",
+      "name": "NSG-linkedTemplate",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -430,7 +329,7 @@
         "networkSecurityGroup": "[if(empty(parameters('networkSecurityGroupId')), json('null'), json(concat('{\"id\": \"', variables('nsgId'), '\"}')))]"
       },
       "dependsOn": [
-        "[variables('newNsgDeploymentName')]"
+        "NSG-linkedTemplate"
       ]
     },
     {
@@ -439,7 +338,6 @@
       "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')))]",
       "location": "[parameters('location')]",
       "tags": "[parameters('virtualMachineTags')]",
-      "plan": "[variables('vmPlan')]",
       "copy": {
         "name": "rdsh-vm-loop",
         "count": "[parameters('rdshNumberOfInstances')]"
@@ -447,7 +345,9 @@
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '-nic')]"
       ],
-      "identity": "[variables('vmIdentity')]",
+      "identity": {
+        "type": "[if(parameters('aadJoin'), 'systemAssigned', 'none')]"
+      },
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('rdshVmSize')]"
@@ -459,10 +359,10 @@
           "adminPassword": "[variables('vmAdministratorPassword')]"
         },
 		"securityProfile": {
-		  "securityType": "[parameters('securityType')]",
+		  "securityType": "TrustedLaunch",
 		  "uefiSettings": {
-			"secureBootEnabled": "[parameters('secureBoot')]",
-			"vTpmEnabled": "[parameters('vTPM')]"
+			"secureBootEnabled": "true",
+			"vTpmEnabled": "true"
 		  }
 		},
         "storageProfile": {
@@ -484,11 +384,84 @@
           ]
         },
         "diagnosticsProfile": {
-          "bootDiagnostics": "[parameters('bootDiagnostics')]"
+          "bootDiagnostics": {
+            "enabled": false
+          }
         },
         "licenseType": "Windows_Client"
       },
       "zones": "[if(equals(parameters('availabilityOption'), 'AvailabilityZone'), array(parameters('availabilityZone')), variables('emptyArray'))]"
+    },
+    {
+      "apiVersion": "2018-10-01",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'dscextension')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "rdsh-vm-loop"
+      ],
+      "copy": {
+        "name": "rdsh-dsc-loop",
+        "count": "[parameters('rdshNumberOfInstances')]"
+      },
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.73",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "modulesUrl": "[parameters('artifactsLocation')]",
+          "configurationFunction": "Configuration.ps1\\AddSessionHost",
+          "properties": {
+            "hostPoolName": "[parameters('hostpoolName')]",
+            "registrationInfoToken": "[parameters('hostpoolToken')]",
+            "aadJoin": "[parameters('aadJoin')]"
+          }
+        }
+      }
+    },
+    {
+      "condition": "[and(parameters('aadJoin'),not(parameters('intune')))]",
+      "apiVersion": "2018-10-01",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'AADLoginForWindows')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "rdsh-dsc-loop"
+      ],
+      "copy": {
+        "name": "rdsh-aad-join-loop",
+        "count": "[parameters('rdshNumberOfInstances')]"
+      },
+      "properties": {
+        "publisher": "Microsoft.Azure.ActiveDirectory",
+        "type": "AADLoginForWindows",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true
+      }
+    },
+    {
+      "condition": "[and(parameters('aadJoin'),parameters('intune'))]",
+      "apiVersion": "2018-10-01",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'AADLoginForWindowsWithIntune')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "rdsh-dsc-loop"
+      ],
+      "copy": {
+        "name": "rdsh-aad-join-intune-loop",
+        "count": "[parameters('rdshNumberOfInstances')]"
+      },
+      "properties": {
+        "publisher": "Microsoft.Azure.ActiveDirectory",
+        "type": "AADLoginForWindows",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "mdmId": "0000000a-0000-0000-c000-000000000000"
+        }
+      }
     },
     {
       "condition": "[not(parameters('aadJoin'))]",
@@ -496,7 +469,9 @@
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'joindomain')]",
       "location": "[parameters('location')]",
-      "dependsOn": [ "rdsh-vm-loop" ],
+      "dependsOn": [
+        "rdsh-dsc-loop"
+      ],
       "copy": {
         "name": "rdsh-domain-join-loop",
         "count": "[parameters('rdshNumberOfInstances')]"
@@ -517,65 +492,8 @@
           "password": "[parameters('administratorAccountPassword')]"
         }
       }
-    },
-    {
-      "apiVersion": "2018-10-01",
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'Microsoft.PowerShell.DSC')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [ "rdsh-domain-join-loop" ],
-      "copy": {
-        "name": "rdsh-dsc-loop",
-        "count": "[parameters('rdshNumberOfInstances')]"
-      },
-      "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.73",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "modulesUrl": "[parameters('artifactsLocation')]",
-          "configurationFunction": "Configuration.ps1\\AddSessionHost",
-          "properties": {
-            "hostPoolName": "[parameters('hostpoolName')]",
-            "registrationInfoToken": "[parameters('hostpoolToken')]",
-            "aadJoin": "[parameters('aadJoin')]",
-            "sessionHostConfigurationLastUpdateTime": "[parameters('SessionHostConfigurationVersion')]"
-          }
-        }
-      }
-    },
-    {
-      "condition": "[parameters('aadJoin')]",
-      "apiVersion": "2018-10-01",
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'AADLoginForWindows')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [ "rdsh-dsc-loop" ],
-      "copy": {
-        "name": "rdsh-aad-join-loop",
-        "count": "[parameters('rdshNumberOfInstances')]"
-      },
-      "properties": {
-        "publisher": "Microsoft.Azure.ActiveDirectory",
-        "type": "AADLoginForWindows",
-        "typeHandlerVersion": "1.0",
-        "autoUpgradeMinorVersion": true,
-        "settings": "[if(parameters('intune'), createObject('mdmId','0000000a-0000-0000-c000-000000000000'), json('null'))]"
-      }
-    },
-    {
-      "condition": "[not(empty(parameters('customConfigurationTemplateUrl')))]",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
-      "name": "post-deployment-custom-configurations",
-      "dependsOn": [
-        "rdsh-dsc-loop",
-        "rdsh-aad-join-loop",
-        "rdsh-domain-join-loop"
-      ],
-      "properties": "[variables('customConfigurationParameter')]"
     }
   ],
   "outputs": {}
+}
 }
