@@ -17,6 +17,6 @@ RUN pip3 install Django
 
 EXPOSE 8000
   
-CMD django-admin startproject
+CMD django-admin startproject web
 
 CMD python3.7 manage.py runserver
