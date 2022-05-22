@@ -14,9 +14,7 @@ WORKDIR $DockerHOME
 #RUN pip3 install -r requirements.txt
 
 RUN pip install django djangorestframework
-
+ 
+RUN django-admin startproject web .
 EXPOSE 8000
-  
-CMD django-admin startproject web .
-CMD python manage.py startapp webb
-CMD python manage.py runserver
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
