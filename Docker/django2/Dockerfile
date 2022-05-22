@@ -9,9 +9,11 @@ RUN mkdir -p $DockerHOME
 
 WORKDIR $DockerHOME
 
-COPY ./Python/django2 .
+#COPY ./Python/django2 .
 
-RUN pip3 install -r requirements.txt
+#RUN pip3 install -r requirements.txt
+
+RUN pip3 install Django
 
 EXPOSE 8000
   
