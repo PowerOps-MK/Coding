@@ -2,7 +2,7 @@ FROM python:3.8-slim-buster
 
 WORKDIR /app
 
-COPY ./spotify .
+COPY ./Docker/python/spotify .
 
 RUN pip3 install -r requirements.txt
 
