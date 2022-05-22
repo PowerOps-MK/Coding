@@ -7,7 +7,7 @@ RUN mkdir -p $DockerHOME
 
 WORKDIR $DockerHOME
 
-COPY ./Docker/django .
+COPY ./Python/django2 .
 
 RUN pip3 install -r requirements.txt
 
