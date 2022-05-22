@@ -6,4 +6,4 @@ COPY ./Python/spotify .
 
 #RUN pip3 install -r requirements.txt
 
-CMD ["ls"]
+CMD ["echo", "ls"]
