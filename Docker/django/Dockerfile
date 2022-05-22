@@ -1,4 +1,4 @@
-FROM python:3.8.0-slim
+FROM python:3.7.3-slim
 
 # setup environment variable  
 ENV DockerHOME=/home/app/Django2
