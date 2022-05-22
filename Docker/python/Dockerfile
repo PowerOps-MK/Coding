@@ -1,9 +1,9 @@
-FROM python:3.8-slim-buster
+FROM python:3.8.0-slim
 
 WORKDIR /app
 
-COPY ./Coding/Docker/python/spotify .
+COPY . .
 
-RUN pip3 install -r requirements.txt
+#RUN pip3 install -r requirements.txt
 
 CMD ["echo", "Hello"]
