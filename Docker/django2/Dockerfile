@@ -1,7 +1,7 @@
 FROM python:3.7.3-slim
 
 # setup environment variable  
-ENV DockerHOME=/home/app/Django
+ENV DockerHOME=/home/app/Django2
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
@@ -17,6 +17,6 @@ RUN pip3 install Django
 
 EXPOSE 8000
   
-CMD django-admin startproject web
+CMD django-admin startproject web .
 
 CMD python3.7 manage.py runserver
