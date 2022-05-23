@@ -19,6 +19,6 @@ RUN echo "ALLOWED_HOSTS = ['*']" | tee -a /home/app/Django2/web/settings.py
 
 RUN python3.7 manage.py startapp polls
 
-COPY . ./polls
+COPY . .
 
 CMD python3.7 manage.py runserver 0.0.0.0:$PORT
