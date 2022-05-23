@@ -17,6 +17,6 @@ RUN pip install django djangorestframework
  
 RUN django-admin startproject web .
 
-RUN "ALLOWED_HOSTS = ['django2-mktest.herokuapp.com']" | tee -a ./web/settings.py 
+RUN "ALLOWED_HOSTS = ['*']" | tee -a web/settings.py 
 
 CMD python manage.py runserver 0.0.0.0:$PORT
