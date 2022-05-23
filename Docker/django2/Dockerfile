@@ -17,7 +17,7 @@ RUN django-admin startproject web .
 
 RUN echo "ALLOWED_HOSTS = ['*']" | tee -a /home/app/Django2/web/settings.py 
 
-python manage.py startapp polls
+RUN python3.7 manage.py startapp polls
 
 COPY . ./polls
 
