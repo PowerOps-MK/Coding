@@ -9,13 +9,13 @@ RUN mkdir -p $DockerHOME
 
 WORKDIR $DockerHOME
 
-COPY . .
+COPY ./requirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
  
 RUN django-admin startproject web .
 
-RUN echo "ALLOWED_HOSTS = ['*']" | tee -a /home/app/Django2/web/settings.py 
+RUN echo "ALLOWED_HOSTS = ['*']" | tee -a ./web/settings.py 
 
 RUN python3.7 manage.py startapp polls
 
