@@ -16,7 +16,5 @@ WORKDIR $DockerHOME
 RUN pip install django djangorestframework
  
 RUN django-admin startproject web .
-# EXPOSE 8080
-# CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
 
 CMD python manage.py runserver 0.0.0.0:$PORT
