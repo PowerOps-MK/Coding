@@ -9,11 +9,9 @@ RUN mkdir -p $DockerHOME
 
 WORKDIR $DockerHOME
 
-COPY . .
+COPY ../../Python/django2 .
 
 RUN pip3 install -r requirements.txt
-
-# RUN pip install django djangorestframework
  
 RUN django-admin startproject web .
 
