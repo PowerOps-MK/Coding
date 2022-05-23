@@ -17,4 +17,8 @@ RUN django-admin startproject web .
 
 RUN echo "ALLOWED_HOSTS = ['*']" | tee -a /home/app/Django2/web/settings.py 
 
+python manage.py startapp polls
+
+COPY . ./polls
+
 CMD python3.7 manage.py runserver 0.0.0.0:$PORT
