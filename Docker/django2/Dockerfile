@@ -15,10 +15,10 @@ RUN pip3 install -r requirements.txt
  
 RUN django-admin startproject web .
 
-RUN echo "ALLOWED_HOSTS = ['*']" | tee -a ./web/settings.py 
-
 RUN python3.7 manage.py startapp polls
 
 COPY ./src .
+
+RUN python3.7 manage.py migrate
 
 CMD python3.7 manage.py runserver 0.0.0.0:$PORT
