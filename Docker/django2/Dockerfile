@@ -19,6 +19,6 @@ RUN echo "ALLOWED_HOSTS = ['*']" | tee -a ./web/settings.py
 
 RUN python3.7 manage.py startapp polls
 
-COPY . ./web
+COPY . .
 
 CMD python3.7 manage.py runserver 0.0.0.0:$PORT
