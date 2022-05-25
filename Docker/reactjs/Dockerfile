@@ -1,19 +1,9 @@
-# pull official base image
-FROM node:alpine
-
-# set working directory
-WORKDIR /app
-
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
-# install app dependencies
-COPY package.json ./
+FROM node:9.6.1 as builder
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+COPY package.json /usr/src/app/package.json
 RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
-
-# add app
-COPY ./src ./
-
-# start app
-CMD ["npm", "start"]
+RUN npm install react-scripts@1.1.1 -g --silent
+COPY ./src /usr/src/app
+RUN npm run build
