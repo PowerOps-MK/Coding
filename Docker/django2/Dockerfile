@@ -20,6 +20,8 @@ RUN django-admin startproject web .
 
 RUN python3.7 manage.py startapp polls
 
+RUN python3.7 manage.py migrate
+
 COPY ./src .
 
 RUN python3.7 manage.py migrate
