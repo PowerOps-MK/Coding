@@ -6,4 +6,4 @@ COPY . .
 
 EXPOSE $PORT
 
-CMD nginx -g 'daemon off'
+CMD nginx -g 'daemon off;'
