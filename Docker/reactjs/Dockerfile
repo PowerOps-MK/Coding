@@ -9,12 +9,9 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 RUN npm create react-app example-react-app
 
-WORKDIR /app/example-react-app
+# WORKDIR /app/example-react-app
 
 # Installs all node packages
-RUN npm install 
-
-# Copies everything over to Docker environment
-COPY . ./
+RUN npm install ./example-react-app
 
 CMD npm start
