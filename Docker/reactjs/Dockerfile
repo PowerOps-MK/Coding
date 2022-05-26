@@ -1,17 +1,18 @@
-# get the base node image
-FROM node:alpine as builder
+# pull official base image
+FROM node:10
 
-# set the working dir for container
-WORKDIR /frontend
+# set working directory
+WORKDIR /app
 
-# copy the json file first
-COPY ./package.json /frontend
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-# install npm dependencies
-RUN npm install
+RUN npm create react-app example-react-app
 
-# copy other project files
-COPY . .
+# Installs all node packages
+RUN npm install 
 
-# build the folder
-CMD [ "npm", "run", "start" ]
+# Copies everything over to Docker environment
+COPY . ./
+
+CMD npm start
