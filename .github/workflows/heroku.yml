@@ -37,7 +37,7 @@ jobs:
           # (Optional, default: "./")
           # Dockerfile directory.
           # For example, if you have a Dockerfile in the root of your project, leave it as follows:
-          dockerfile_directory: ./Docker/reactjs
+          dockerfile_directory: ./Docker/django2
 
           # (Optional, default: "web")
           # Select the process type for which you want the docker container to be uploaded.
