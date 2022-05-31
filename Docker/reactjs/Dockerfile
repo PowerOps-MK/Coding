@@ -14,4 +14,6 @@ WORKDIR /app/example-react-app
 # Installs all node packages
 RUN npm install
 
+EXPOSE $PORT
+
 CMD npm start
