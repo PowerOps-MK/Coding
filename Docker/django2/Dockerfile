@@ -17,4 +17,6 @@ RUN django-admin startproject web .
 
 COPY ./src .
 
+EXPOSE $PORT
+
 CMD python3.7 manage.py runserver 0.0.0.0:$PORT
