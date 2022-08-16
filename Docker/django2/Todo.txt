@@ -1,0 +1,33 @@
+ - apache2
+ - libapache2-mod-wsgi-py3 sudo python3.7 -m venv /data/Django2/env
+
+sudo chown -R marciano:marciano /data/Django2/env
+
+#Enter venv
+source /data/Django2/env/bin/activate
+
+python -m pip install -r /data/Django2/requirements.txt
+#Exit venv
+
+#Setup webapp - Django
+sudo chown www-data:www-data /data/Django2/db.sqlite3
+
+sudo sed -i 's;</VirtualHost>;#</VirtualHost>;g' /etc/apache2/sites-enabled/000-default.conf
+
+echo '  Alias /static /data/Django2/static
+    <Directory /data/Django2/static>
+        Require all granted
+    </Directory>
+
+    <Directory /data/Django2/rpi_monitoring>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+    WSGIDaemonProcess django python-path=/data/Django2 python-home=/data/Django2/env
+    WSGIProcessGroup django
+    WSGIScriptAlias / /data/Django2/rpi_monitoring/wsgi.py
+</VirtualHost>' | sudo tee -a /etc/apache2/sites-enabled/000-default.conf
+
+sudo systemctl restart apache2
