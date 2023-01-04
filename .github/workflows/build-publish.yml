@@ -69,7 +69,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       
       #Build en publish docker image
-      - name: Build and push Docker image
+      - name: Build and push
         uses: docker/build-push-action@v3
         with:
           file: ./Docker/reactjs/Dockerfile
@@ -99,4 +99,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v3
-      
+    
+      # Call API to start redeploy
+      - name: Redeploy
+        uses: distributhor/workflow-webhook@v2
+        env:
+          webhook_url: "https://api.render.com/deploy/srv-ceqv41irrk00n41h5nk0?key=fPCoFP9s-mo"
