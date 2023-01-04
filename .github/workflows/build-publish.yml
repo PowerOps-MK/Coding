@@ -1,0 +1,102 @@
+---
+# This is a basic workflow to deploy to a local Kubernetes (k3s) cluster
+name: "Python CI/CD"
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push events but only for the master branch
+  push:
+    branches: [master, main]
+    paths:
+      - "Python/**"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Ensures only 1 workflow is running
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Test the configuration (YAML) files 
+  test:
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+    # Setup defaults for the steps within a job
+    defaults:
+      run:
+        working-directory: ./Python
+
+    # Setup matrix for OS and Python
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.7"]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Install Python from matrix  
+      - name: Install Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "${{ matrix.python-version }}"
+ 
+      # Install dependencies from requirements 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r ./requirements.txt
+      # Run pylint against the scripts
+      - name: Lint Code Base
+        uses: github/super-linter/slim@v4
+        env: 
+          VALIDATE_PYTHON_FLAKE8: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+         
+  # Deploy the config files to the k3s cluster
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+    # Define dependency's between jobs
+    needs: test
+    # Setup defaults for the steps within a job
+    defaults:
+      run:
+        working-directory: ./Python
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      # Replace dependencies in requirements
+      - name: Replace dependencies
+        run: sed -i 's;#;;g' ./requirements.txt
+
+      # Install dependencies from requirements 
+      - name: Install dependencies
+        run: python3.7 -m pip install -r ./requirements.txt
+
+      # Copy files to a local directory
+      - name: Copy scripts
+        run: cp -r ./* /data/scripts
+
+      #  Modify the permissions of the scripts to executable 
+      - name: Modify permissions 
+        run: |
+          sudo chmod +x /data/scripts/*.py
+          sudo chmod +x /data/scripts/*.sh
+      #  Restart bot service
+      - name: Restart service 
+        run: |
+          sudo systemctl restart bot
+      # Cleanup the work dir on the runner
+      - name: Runner cleanup
+        run: rm -rf ${{ github.workspace }}/*
