@@ -80,6 +80,12 @@ jobs:
       run:
         working-directory: ./Docker
 
+    # Setup matrix for OS and Python
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.7"]
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
