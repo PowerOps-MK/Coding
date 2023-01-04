@@ -20,12 +20,23 @@ concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
 
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # Test the configuration (YAML) files 
   build:
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
+    # This is used to complete the identity challenge
+    permissions:
+      contents: read
+      packages: write
     # Setup defaults for the steps within a job
     defaults:
       run:
