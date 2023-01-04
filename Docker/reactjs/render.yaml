@@ -1,1 +1,12 @@
 
+services:
+  # A Docker web service
+  - type: web
+    name: reactjsexample
+    env: docker
+    repo: https://github.com/render-examples/webdis.git # optional
+    region: frankfurt # optional (defaults to oregon)
+    plan: free # optional (defaults to starter)
+    branch: master # optional (defaults to master)
+    rootDir: Docker/reactjs
+    
