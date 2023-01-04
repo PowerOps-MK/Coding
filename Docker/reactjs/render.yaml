@@ -9,4 +9,4 @@ services:
     plan: free # optional (defaults to starter)
     branch: master # optional (defaults to master)
     rootDir: Docker/reactjs
-    
+    autoDeploy: false # optional
