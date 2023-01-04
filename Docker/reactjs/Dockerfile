@@ -14,8 +14,5 @@ WORKDIR /app/example-react-app
 # Installs all node packages
 RUN npm install
 
-# Needed for Heroku
-# EXPOSE $PORT
-
 # Start the service
 CMD npm start
