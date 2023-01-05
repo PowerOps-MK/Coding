@@ -6,12 +6,22 @@
 version: 2
 updates:
   - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/Docker/nginx" # Location of package manifests
+    directory: "/Docker/django2" # Location of package manifests
     schedule:
       interval: "weekly"
   
   - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/Docker/nginx" # Location of package manifests
+    schedule:
+      interval: "weekly"
+      
+  - package-ecosystem: "docker" # See documentation for possible values
     directory: "/Docker/python" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/Docker/reactjs" # Location of package manifests
     schedule:
       interval: "weekly"
       
