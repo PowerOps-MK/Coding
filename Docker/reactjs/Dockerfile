@@ -1,5 +1,5 @@
 # pull official base image
-FROM node
+FROM node:19
 
 # set working directory
 WORKDIR /app
