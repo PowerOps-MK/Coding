@@ -1,10 +1,19 @@
 ---
 services:
-  # A Docker web service
+  # A ReactJS web service
   - type: web
     name: reactjsexample
     env: docker
     region: frankfurt # optional (defaults to oregon)
     plan: free # optional (defaults to starter)
     rootDir: Docker/reactjs
+    autoDeploy: false # optional
+ 
+   # A Go web service
+  - type: web
+    name: goexample
+    env: docker
+    region: frankfurt # optional (defaults to oregon)
+    plan: free # optional (defaults to starter)
+    rootDir: Docker/go
     autoDeploy: false # optional
