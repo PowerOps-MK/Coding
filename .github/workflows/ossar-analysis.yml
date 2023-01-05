@@ -18,11 +18,20 @@ on:
   schedule:
     - cron: '22 10 * * 6'
 
+# Permissions needed to run the workflow (top level)
+permissions:
+  contents: read
+
 jobs:
   OSSAR-Scan:
     # OSSAR runs on windows-latest.
     # ubuntu-latest and macos-latest support coming soon
     runs-on: windows-latest
+    
+    # Permissions needed to run the workflow (run level)
+    permissions:
+      contents: read
+      security-events: write
 
     steps:
     - name: Checkout repository
