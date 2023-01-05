@@ -15,4 +15,4 @@ WORKDIR /app/example-react-app
 RUN npm install
 
 # Start the service
-CMD npm start
+CMD ["npm", "start"]
