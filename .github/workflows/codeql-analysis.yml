@@ -21,6 +21,10 @@ on:
   schedule:
     - cron: '20 20 * * 5'
 
+# Permissions needed to run the workflow (top level)
+permissions:
+  contents: read
+  
 jobs:
   analyze:
     name: Analyze
