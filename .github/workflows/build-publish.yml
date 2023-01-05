@@ -55,11 +55,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b #v3.2.0
   
       # Log in to the Container registry
       - name: Log in to the Container registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a #v2.1.0
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -68,13 +68,13 @@ jobs:
       # Extract metadata (tags, labels) for Docker
       - name: Extract metadata
         id: meta
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@57396166ad8aefe6098280995947635806a0e6ea #v4.1.1
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       
       #Build en publish docker image
       - name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@c56af957549030174b10d6867f20e78cfd7debc5 #v3.2.0
         with:
           file: ./Docker/reactjs/Dockerfile
           push: false
@@ -102,11 +102,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b #v3.2.0
     
       # Call API to start redeploy
       - name: Redeploy
-        uses: distributhor/workflow-webhook@v2
+        uses: distributhor/workflow-webhook@3b1dfb659938cacd1f6eab6e2c79478b5b1ac06f #v2.0.4
         env:
           webhook_url: ${{ secrets.RENDER_URL }}
           webhook_secret: "fP"
