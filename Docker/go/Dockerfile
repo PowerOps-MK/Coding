@@ -11,7 +11,7 @@ COPY *.go ./
 RUN go mod download
 
 # compile application
-RUN go build -o /godocker
+RUN go build -v -o server
 
 # command to be used to execute when the image is used to start a container
-CMD [ "/godocker" ]
+CMD ["/app/server"]
