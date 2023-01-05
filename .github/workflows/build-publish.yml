@@ -25,6 +25,10 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
+
+# Permissions needed to run the workflow (top level)
+permissions:
+  contents: read
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
