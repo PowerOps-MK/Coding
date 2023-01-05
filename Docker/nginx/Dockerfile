@@ -1,4 +1,4 @@
-FROM nginx:1.23
+FROM nginx@sha256:0047b729188a15da49380d9506d65959cce6d40291ccfb4e039f5dc7efd33286 #v1.23
 
 WORKDIR /usr/share/nginx
 
