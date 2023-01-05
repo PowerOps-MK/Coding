@@ -21,9 +21,11 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
-    # Permissions needed to run the workflow (top level)
+    # Permissions needed to run the workflow (run level)
     permissions:
       contents: read
+      statuses: write
+      
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
