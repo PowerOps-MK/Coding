@@ -5,7 +5,7 @@ FROM golang:1.17-alpine
 WORKDIR /app
 
 # copy Go modules and dependencies to image
-COPY go.mod ./
+COPY go.* ./
 
 # download Go modules and dependencies
 RUN go mod download
