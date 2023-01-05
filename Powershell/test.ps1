@@ -5,4 +5,4 @@ Install-Module aztable -Scope AllUsers -Force
 Install-Module microsoft.graph -Scope AllUsers -Force
 Install-Module azureadpreview -Scope AllUsers -Force
 
-Write-Host "Hello World"
+Write-Output "Hello World"
