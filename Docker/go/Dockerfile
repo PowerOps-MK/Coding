@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1
-
 # specify the base image golang:1.17-alpine
 FROM golang:1.17-alpine
 
