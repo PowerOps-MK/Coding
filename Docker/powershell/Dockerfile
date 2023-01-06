@@ -8,4 +8,4 @@ WORKDIR /app
 COPY . .
 
 # Download modules and dependencies
-RUN pwsh -Command {Install-Module -name Az -confirm:$false}
+RUN pwsh -Command {Install-Module -name Az -force}
