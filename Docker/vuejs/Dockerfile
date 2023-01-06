@@ -1,17 +1,20 @@
-# pull official base image node:19-alpine
+# Specify the base image node:19-alpine
 FROM node@sha256:d5222e1ebd7dd7e9683f47a8861a4711cb4407a4830cbe04a582ca4986245700
 
-# set working directory
+# Create a working directory inside the image
 WORKDIR /app
 
-# copy project files and folders to the current working directory (i.e. 'app' folder)
+# Copy directory files i.e all files 
 COPY . .
 
+# Download modules and dependencies
 RUN npm install -g @vue/cli
 
+# Create example application
 RUN vue create example-vuejs-app --default --registry "https://registry.npmmirror.com"
 
+# Create a working directory inside the image
 WORKDIR /app/example-vuejs-app
 
-# Start the service
+# command to be used to execute when the image is used to start a container
 CMD ["npm", "run", "serve"]
