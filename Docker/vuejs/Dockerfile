@@ -7,9 +7,6 @@ RUN npm install -g http-server
 # set working directory
 WORKDIR /app
 
-# install project dependencies
-RUN npm install
-
 # copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .
 
@@ -17,4 +14,4 @@ COPY . .
 RUN npm run build
 
 # Start the service
-CMD [ "http-server", "dist" ]
+CMD ["npm", "start"]
