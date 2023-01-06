@@ -9,7 +9,7 @@ COPY . .
 
 RUN npm install -g @vue/cli
 
-RUN vue create example-vuejs-app --default
+RUN vue create example-vuejs-app --default --registry "https://registry.npmmirror.com"
 
 WORKDIR /app/example-vuejs-app
 
