@@ -16,5 +16,8 @@ RUN vue create example-vuejs-app --default --registry "https://registry.npmmirro
 # Create a working directory inside the image
 WORKDIR /app/example-vuejs-app
 
+RUN ls
+RUN cat vue.config.js
+
 # command to be used to execute when the image is used to start a container
 CMD ["npm", "run", "serve"]
