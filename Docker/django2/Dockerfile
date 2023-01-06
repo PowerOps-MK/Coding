@@ -1,23 +1,21 @@
-# v3.7.3-slim
+# Specify the base image v3.7.3-slim
 FROM python@sha256:250990a809a15bb6a3e307fec72dead200c882c940523fb1694baa78eb0e47c6
 
-# setup environment variable  
-ENV DockerHOME=/data/Django2
+# Setup environment variable  
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-RUN mkdir -p $DockerHOME
+# Create a working directory inside the image
+WORKDIR /data/Django2
 
-WORKDIR $DockerHOME
+# Copy directory files i.e all files
+COPY . . 
 
-COPY ./requirements.txt requirements.txt
-
+# Download modules and dependencies
 RUN pip3 install --no-cache-dir -r requirements.txt
- 
+
+# Compile application
 RUN django-admin startproject web .
 
-COPY ./src .
-
-EXPOSE $PORT
-
+# Command to be used to execute when the image is used to start a container
 CMD ["python3.7", "manage.py", "runserver"]
