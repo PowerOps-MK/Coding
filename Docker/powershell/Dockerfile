@@ -8,4 +8,4 @@ WORKDIR /app
 COPY . .
 
 # Download modules and dependencies
-RUN pwsh -h
+RUN pwsh -Command {Get-Module -Listavailable}
