@@ -5,7 +5,7 @@ FROM golang@sha256:660f138b4477001d65324a51fa158c1b868651b44e43f0953bf062e9f38b7
 WORKDIR /app
 
 # copy directory files i.e all files ending with .go
-COPY *.go ./
+COPY . .
 
 # download Go modules and dependencies
 RUN go mod download
