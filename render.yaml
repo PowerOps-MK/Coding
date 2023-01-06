@@ -9,9 +9,18 @@ services:
     rootDir: Docker/reactjs
     autoDeploy: false # optional
  
+   # A Vue JS web service
+  - type: web
+    name: vuejsexample
+    env: docker
+    region: frankfurt # optional (defaults to oregon)
+    plan: free # optional (defaults to starter)
+    rootDir: Docker/vuejs
+    autoDeploy: false # optional
+
    # A Go web service
   - type: web
-    name: goexample
+    name: gojsexample
     env: docker
     region: frankfurt # optional (defaults to oregon)
     plan: free # optional (defaults to starter)
