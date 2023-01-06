@@ -20,7 +20,7 @@ services:
 
    # A Go web service
   - type: web
-    name: gojsexample
+    name: goexample
     env: docker
     region: frankfurt # optional (defaults to oregon)
     plan: free # optional (defaults to starter)
