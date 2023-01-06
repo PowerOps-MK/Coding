@@ -7,8 +7,7 @@ WORKDIR /app
 # copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .
 
-# Installs all node packages
-RUN npm install
+RUN npm install -g @vue/cli
 
 RUN vue create example-vuejs-app --default
 
