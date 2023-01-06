@@ -1,1 +1,6 @@
-
+flake8
+pytest
+dropbox
+spotipy
+dnspython
+pysmb
