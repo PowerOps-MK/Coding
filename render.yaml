@@ -26,3 +26,12 @@ services:
     plan: free # optional (defaults to starter)
     rootDir: Docker/go
     autoDeploy: false # optional
+
+   # A IIS web service
+  - type: web
+    name: iisexample
+    env: docker
+    region: frankfurt # optional (defaults to oregon)
+    plan: free # optional (defaults to starter)
+    rootDir: Docker/iis
+    autoDeploy: false # optional
