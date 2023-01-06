@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Download modules and dependencies
-RUN npm install -g @vue/cli
+RUN npm install -g @vue/cli@5.0.8
 
 # Create example application
 RUN vue create example-vuejs-app --default --registry "https://registry.npmmirror.com"
