@@ -5,7 +5,7 @@ FROM alpine@sha256:a9b24b67dc83b3383d22a14941c2b2b2ca6a103d805cac6820fd1355943be
 WORKDIR /app
 
 # copy directory files i.e all files ending with .go
-COPY go.mod .
+COPY ./go.mod go.mod
 
 # download Go modules and dependencies
 RUN go mod download
