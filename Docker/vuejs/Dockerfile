@@ -13,7 +13,5 @@ WORKDIR /app/example-vuejs-app
 # Copy directory files i.e all files 
 COPY . .
 
-RUN cat vue.config.js
-
 # command to be used to execute when the image is used to start a container
 CMD ["npm", "run", "serve"]
