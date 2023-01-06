@@ -6,6 +6,8 @@ WORKDIR /app
 
 # copy directory files i.e all files ending with .go
 COPY . .
+RUN ls
+RUN pwd
 
 # download Go modules and dependencies
 RUN go mod download
