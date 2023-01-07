@@ -16,7 +16,7 @@ WORKDIR /app/example-angular-app
 # Copy directory files i.e all files 
 COPY . .
 
-RUN ng node --max_old_space_size=4096
+RUN node --max_old_space_size=4096
 
 # command to be used to execute when the image is used to start a container
 CMD ["ng", "serve"]
