@@ -17,4 +17,4 @@ WORKDIR /app/example-angular-app
 COPY . .
 
 # command to be used to execute when the image is used to start a container
-CMD ["npm", "run", "serve"]
+CMD ["ng", "serve"]
