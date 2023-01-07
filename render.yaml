@@ -27,11 +27,11 @@ services:
     rootDir: Docker/go
     autoDeploy: false # optional
 
-   # A IIS web service
+   # A Angular web service
   - type: web
-    name: iisexample
+    name: angularexample
     env: docker
     region: frankfurt # optional (defaults to oregon)
     plan: free # optional (defaults to starter)
-    rootDir: Docker/iis
+    rootDir: Docker/angular
     autoDeploy: false # optional
