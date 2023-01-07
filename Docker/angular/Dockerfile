@@ -19,4 +19,5 @@ COPY . .
 RUN cat package.json
 
 # command to be used to execute when the image is used to start a container
-CMD ["ng", "serve"]
+# CMD ["ng", "serve"]
+RUN node --max_old_space_size=256 ./node_modules/@angular/cli/bin/ng serve
