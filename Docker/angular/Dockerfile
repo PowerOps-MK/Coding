@@ -16,5 +16,7 @@ WORKDIR /app/example-angular-app
 # Copy directory files i.e all files 
 COPY . .
 
+RUN ls
+
 # command to be used to execute when the image is used to start a container
 CMD ["ng", "serve"]
