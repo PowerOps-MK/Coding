@@ -11,4 +11,6 @@ COPY . .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Command to be used to execute when the image is used to start a container
-CMD ["python3.7", "app.py"]
+
+ENTRYPOINT ["python3.7"]
+CMD ["app.py"]
