@@ -11,7 +11,7 @@ WORKDIR /app
 RUN npm install -g @angular/cli@15.0.5
 
 # Create example application
-RUN ng new example-angular-app
+RUN ng new example-angular-app --defaults
 
 # Create a working directory inside the image
 WORKDIR /app/example-angular-app
