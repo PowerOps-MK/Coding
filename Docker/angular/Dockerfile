@@ -1,6 +1,9 @@
 # Specify the base image node:19-alpine
 FROM node@sha256:d5222e1ebd7dd7e9683f47a8861a4711cb4407a4830cbe04a582ca4986245700
 
+# Setup environment variable  
+ENV NODE_OPTIONS=--max_old_space_size=8048
+
 # Create a working directory inside the image
 WORKDIR /app
 
