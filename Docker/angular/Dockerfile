@@ -5,13 +5,13 @@ FROM node@sha256:d5222e1ebd7dd7e9683f47a8861a4711cb4407a4830cbe04a582ca498624570
 WORKDIR /app
 
 # Download modules and dependencies
-RUN npm install -g @vue/cli@5.0.8
+RUN npm install -g @angular/cli@15.0.5
 
 # Create example application
-RUN vue create example-vuejs-app --default --registry "https://registry.npmmirror.com"
+RUN ng new example-angular-app
 
 # Create a working directory inside the image
-WORKDIR /app/example-vuejs-app
+WORKDIR /app/example-angular-app
 
 # Copy directory files i.e all files 
 COPY . .
