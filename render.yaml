@@ -27,11 +27,11 @@ services:
     rootDir: Docker/go
     autoDeploy: false # optional
 
-   # A Angular web service
+   # A Flask web service
   - type: web
-    name: angularexample
+    name: flaskexample
     env: docker
     region: frankfurt # optional (defaults to oregon)
     plan: free # optional (defaults to starter)
-    rootDir: Docker/angular
+    rootDir: Docker/flask
     autoDeploy: false # optional
