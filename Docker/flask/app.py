@@ -1,7 +1,8 @@
 from flask import Flask
 
 app = Flask(__name__)
-app.config["WTF_CSRF_ENABLED"] = False
+csrf = CSRFProtect()
+csrf.init_app(app) # Compliant
 
 @app.route("/")
 def hello():
