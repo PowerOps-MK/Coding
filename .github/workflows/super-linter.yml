@@ -50,5 +50,4 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_ARM: false
         if: github.event_name == 'workflow_dispatch'
