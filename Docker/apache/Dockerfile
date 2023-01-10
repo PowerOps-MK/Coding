@@ -7,3 +7,5 @@ WORKDIR /app
 # Copy directory files i.e all files
 COPY ./src/html/ /usr/local/apache2/htdocs/
 COPY . . 
+
+RUN cat /etc/apache2/httpd.conf
