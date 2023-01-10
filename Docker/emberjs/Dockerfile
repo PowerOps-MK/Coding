@@ -17,4 +17,4 @@ WORKDIR /app/example-emberjs-app
 COPY . .
 
 # command to be used to execute when the image is used to start a container
-CMD ["ember", "serve"]
+CMD ["npm", "start"]
