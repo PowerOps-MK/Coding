@@ -11,7 +11,7 @@
      "test": "tests"
    },
    "scripts": {
-     "build": "node --max_old_space_size=512 ember build --environment=production",
+     "build": "node --max-old-space-size=512 ember build --environment=production",
      "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
      "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
      "lint:hbs": "ember-template-lint .",
