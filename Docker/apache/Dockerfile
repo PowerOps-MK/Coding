@@ -8,4 +8,4 @@ WORKDIR /app
 COPY ./src/html/ /usr/local/apache2/htdocs/
 COPY . . 
 
-RUN cat /usr/local/apache2/conf/httpd.conf
+RUN echo "ServerName localhost" >> /usr/local/etc/apache2/conf/apache.conf
