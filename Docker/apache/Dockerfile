@@ -8,4 +8,4 @@ WORKDIR /app
 COPY ./src/html/ /usr/local/apache2/htdocs/
 COPY . . 
 
-RUN ls /etc/apache2/
+RUN ls /usr/local/apache2/
