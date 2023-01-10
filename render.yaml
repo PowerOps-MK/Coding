@@ -35,3 +35,12 @@ services:
     plan: free # optional (defaults to starter)
     rootDir: Docker/flask
     autoDeploy: false # optional
+
+   # A Nginx web service
+  - type: web
+    name: nginxexample
+    env: docker
+    region: frankfurt # optional (defaults to oregon)
+    plan: free # optional (defaults to starter)
+    rootDir: Docker/nginx
+    autoDeploy: false # optional
