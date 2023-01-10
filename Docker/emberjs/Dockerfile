@@ -14,7 +14,9 @@ RUN ember new example-emberjs-app
 WORKDIR /app/example-emberjs-app
 
 # Copy directory files i.e all files 
-COPY . .
+# COPY . .
+
+RUN ls
 
 # command to be used to execute when the image is used to start a container
 CMD ["npm", "start"]
