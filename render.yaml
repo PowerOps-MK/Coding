@@ -53,3 +53,12 @@ services:
     plan: free # optional (defaults to starter)
     rootDir: Docker/apache
     autoDeploy: false # optional
+
+   # A Ember JS web service
+  - type: web
+    name: emberjsexample
+    env: docker
+    region: frankfurt # optional (defaults to oregon)
+    plan: free # optional (defaults to starter)
+    rootDir: Docker/emberjs
+    autoDeploy: false # optional
