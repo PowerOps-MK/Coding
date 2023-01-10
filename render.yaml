@@ -44,3 +44,12 @@ services:
     plan: free # optional (defaults to starter)
     rootDir: Docker/nginx
     autoDeploy: false # optional
+
+   # A Apache web service
+  - type: web
+    name: apacheexample
+    env: docker
+    region: frankfurt # optional (defaults to oregon)
+    plan: free # optional (defaults to starter)
+    rootDir: Docker/apache
+    autoDeploy: false # optional
