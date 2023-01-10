@@ -18,7 +18,7 @@
      "lint:hbs:fix": "ember-template-lint . --fix",
      "lint:js": "eslint . --cache",
      "lint:js:fix": "eslint . --fix",
-     "start": "node --max_old_space_size=512 ember serve",
+     "start": "ember serve",
      "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
      "test:ember": "ember test"
    },
