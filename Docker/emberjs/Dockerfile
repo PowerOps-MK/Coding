@@ -14,7 +14,10 @@ RUN ember new example-emberjs-app
 WORKDIR /app/example-emberjs-app
 
 # Copy directory files i.e all files 
-COPY . .
+# COPY . .
+
+RUN node --max-old-space-size=512
+ENV NODE_OPTIONS=--max-old-space-size=512
 
 # command to be used to execute when the image is used to start a container
 CMD ["npm", "start"]
