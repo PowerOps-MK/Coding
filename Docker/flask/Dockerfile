@@ -1,5 +1,5 @@
 # Specify the base image python:3.11-slim
-FROM python:3.11-slim
+FROM python@sha256:ad1b4d1fd5c1efee69c2da4659b0762fc068e8edff972b39d68fd631db9bb20a
 
 # Create a working directory inside the image
 WORKDIR /app
