@@ -11,4 +11,4 @@ COPY . .
 RUN cargo install --path .
 
 # Command to be used to execute when the image is used to start a container
-CMD ["myapp"]
+CMD ["echo", "Hello"]
