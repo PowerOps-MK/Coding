@@ -16,7 +16,6 @@ WORKDIR /app/example-angular-app
 # Copy directory files i.e all files 
 COPY . .
 
-ENV JAVA_OPTS -Xmx256m
-
 # command to be used to execute when the image is used to start a container
-CMD ["ng", "serve"]
+# CMD ["ng", "serve"]
+CMD ["ng", "serve", "--max-old-space-size=512", "--max-semi-space-size=256"]
