@@ -53,3 +53,12 @@ services:
     plan: free # optional (defaults to starter)
     rootDir: Docker/apache
     autoDeploy: false # optional
+
+   # A Angular JS web service
+  - type: web
+    name: angularexample
+    env: docker
+    region: frankfurt # optional (defaults to oregon)
+    plan: free # optional (defaults to starter)
+    rootDir: Docker/angular
+    autoDeploy: false # optional
