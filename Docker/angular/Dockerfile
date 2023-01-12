@@ -18,5 +18,5 @@ COPY . .
 
 # command to be used to execute when the image is used to start a container
 # CMD ["ng", "serve"]
-CMD ["node", "--max-old-space-size=512", "./node_modules/.bin/ng", "serve"]
-
+ENV NODE_OPTIONS="--max-old-space-size=512"
+CMD ["ng", "serve"]
