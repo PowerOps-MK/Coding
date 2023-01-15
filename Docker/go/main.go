@@ -5,7 +5,7 @@ import (
     "net/http"
 )
 
-funcmain() {
+func main() {
     http.HandleFunc("/", HelloServer)
     http.ListenAndServe(":8080", nil)
 }
