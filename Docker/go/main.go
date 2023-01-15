@@ -1,14 +1,14 @@
 // Sample run-helloworld is a minimal Cloud Run service.
- package main
+package main
 
- import (
+import (
  	"fmt"
  	"log"
  	"net/http"
  	"os"
- )
+)
 
- func main() {
+func main() {
  	log.Print("starting server...")
  	http.HandleFunc("/", handler)
 
@@ -32,7 +32,7 @@
  		name = "World"
  	}
  	fmt.Fprintf(w, "Hello %s!\n", name)
- }
+}
 
- // [END run_helloworld_service]
- // [END cloudrun_helloworld_service]
+// [END run_helloworld_service]
+// [END cloudrun_helloworld_service]
