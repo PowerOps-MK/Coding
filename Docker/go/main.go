@@ -2,15 +2,22 @@ package main
 
 import (
     "fmt"
+    "time"
     "net/http"
 )
 
 func main() {
-    http.HandleFunc("/", HelloServer)
-    http.ListenAndServe(":8080", nil)
-}
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
+    })
 
-func HelloServer(w http.ResponseWriter, r *http.Request) {
-    // fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
-    n, err := fmt.Fprint(w, "Hello", r.URL.Path[1:])
+    server := &http.Server{
+        Addr:              ":8080",
+        ReadHeaderTimeout: 3 * time.Second,
+    }
+
+    err := server.ListenAndServe()
+    if err != nil {
+        panic(err)
+    }
 }
