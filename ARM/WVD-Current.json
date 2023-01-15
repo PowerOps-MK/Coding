@@ -40,13 +40,6 @@
         3
       ]
     },
-    "vmGalleryImageSKU": {
-      "type": "string",
-      "metadata": {
-        "description": "(Required when vmImageType = Gallery) Gallery image SKU."
-      },
-      "defaultValue": ""
-    },
     "rdshPrefix": {
       "type": "string",
       "metadata": {
@@ -225,7 +218,6 @@
     }
   },
   "variables": {
-    "emptyArray": [],
     "domain": "[if(equals(parameters('domain'), ''), last(split(parameters('administratorAccountUsername'), '@')), parameters('domain'))]",
     "storageAccountType": "[parameters('rdshVMDiskType')]",
     "newNsgName": "[concat(parameters('rdshPrefix'), 'nsg-', parameters('_guidValue'))]",
@@ -251,7 +243,7 @@
             {
               "condition": "[parameters('createNetworkSecurityGroup')]",
               "type": "Microsoft.Network/networkSecurityGroups",
-              "apiVersion": "2022-07-01",
+              "apiVersion": "2022-05-01",
               "name": "[variables('newNsgName')]",
               "location": "[parameters('location')]",
               "tags": "[parameters('networkSecurityGroupTags')]",
