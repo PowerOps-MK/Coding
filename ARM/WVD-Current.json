@@ -401,29 +401,6 @@
       }
     },
     {
-      "condition": "[and(parameters('aadJoin'),parameters('intune'))]",
-      "apiVersion": "2022-11-01",
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'AADLoginForWindowsWithIntune')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "rdsh-dsc-loop"
-      ],
-      "copy": {
-        "name": "rdsh-aad-join-intune-loop",
-        "count": "[parameters('rdshNumberOfInstances')]"
-      },
-      "properties": {
-        "publisher": "Microsoft.Azure.ActiveDirectory",
-        "type": "AADLoginForWindows",
-        "typeHandlerVersion": "1.0",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "mdmId": "0000000a-0000-0000-c000-000000000000"
-        }
-      }
-    },
-    {
       "condition": "[not(parameters('aadJoin'))]",
       "apiVersion": "2022-11-01",
       "type": "Microsoft.Compute/virtualMachines/extensions",
