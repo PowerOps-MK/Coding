@@ -279,7 +279,7 @@
   },
   "resources": [
     {
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2021-04-01",
       "name": "NSG-linkedTemplate",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -304,7 +304,7 @@
       }
     },
     {
-      "apiVersion": "2018-11-01",
+      "apiVersion": "2022-07-01",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '-nic')]",
       "location": "[parameters('location')]",
@@ -333,7 +333,7 @@
       ]
     },
     {
-      "apiVersion": "2021-11-01",
+      "apiVersion": "2022-11-01",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')))]",
       "location": "[parameters('location')]",
@@ -393,7 +393,7 @@
       "zones": "[if(equals(parameters('availabilityOption'), 'AvailabilityZone'), array(parameters('availabilityZone')), variables('emptyArray'))]"
     },
     {
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2022-11-01",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'dscextension')]",
       "location": "[parameters('location')]",
@@ -422,7 +422,7 @@
     },
     {
       "condition": "[and(parameters('aadJoin'),not(parameters('intune')))]",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2022-11-01",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'AADLoginForWindows')]",
       "location": "[parameters('location')]",
@@ -442,7 +442,7 @@
     },
     {
       "condition": "[and(parameters('aadJoin'),parameters('intune'))]",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2022-11-01",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'AADLoginForWindowsWithIntune')]",
       "location": "[parameters('location')]",
@@ -465,7 +465,7 @@
     },
     {
       "condition": "[not(parameters('aadJoin'))]",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2022-11-01",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'joindomain')]",
       "location": "[parameters('location')]",
