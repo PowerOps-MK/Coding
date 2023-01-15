@@ -137,24 +137,10 @@
       },
       "defaultValue": ""
     },
-    "networkSecurityGroupRules": {
-      "type": "array",
-      "metadata": {
-        "description": "The rules to be given to the new network security group"
-      },
-      "defaultValue": []
-    },
     "networkInterfaceTags": {
       "type": "object",
       "metadata": {
         "description": "The tags to be assigned to the network interfaces"
-      },
-      "defaultValue": {}
-    },
-    "networkSecurityGroupTags": {
-      "type": "object",
-      "metadata": {
-        "description": "The tags to be assigned to the network security groups"
       },
       "defaultValue": {}
     },
