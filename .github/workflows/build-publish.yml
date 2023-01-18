@@ -94,6 +94,7 @@ jobs:
         working-directory: ./Docker
     # Setup env variables for the job
     environment:
+      name: render
       url: "https://dashboard.render.com"
 
     # Setup matrix for OS and Python
