@@ -58,7 +58,7 @@ jobs:
           npm test
       # Upload artifact (gzip) to deploy
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@20a4baa1095bad40ba7d6ca0d9abbc220b76603f # v1.0.7
+        uses: actions/upload-pages-artifact@v1.0.7
         with:
           path: build
 
