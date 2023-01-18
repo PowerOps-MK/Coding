@@ -92,6 +92,9 @@ jobs:
     defaults:
       run:
         working-directory: ./Docker
+    # Setup env variables for the job
+    environment:
+      url: "https://dashboard.render.com"
 
     # Setup matrix for OS and Python
     strategy:
