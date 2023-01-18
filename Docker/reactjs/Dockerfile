@@ -13,8 +13,6 @@ RUN npm create react-app example-react-app
 # Create a working directory inside the image
 WORKDIR /app/example-react-app
 
-RUN cat ./package-lock.json
-
 # Download modules and dependencies
 RUN npm install
 
