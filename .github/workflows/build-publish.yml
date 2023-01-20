@@ -25,6 +25,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
+  # Name of the app
   APP: reactjs
 
 # Permissions needed to run the workflow (top level)
