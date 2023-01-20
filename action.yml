@@ -1,9 +1,0 @@
-name: 'Replace Action'
-description: 'GitHub Action to replace string in files'
-inputs:
-outputs:
-  modifiedFiles:
-    description: "The number of files which have been modified"
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
