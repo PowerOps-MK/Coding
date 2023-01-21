@@ -12,7 +12,7 @@ files_dict = json.loads(files_json)
 #  Loop through the dictionary
 for object in files_dict["files"]:
     full_path = f"{files_path}/{object['file']}"
-    
+
     # Read in the file
     with open(full_path, "r") as file:
         filedata = file.read()
