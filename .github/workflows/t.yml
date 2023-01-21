@@ -35,7 +35,7 @@ jobs:
  
       # Find and replace the String in files
       - name: Replace      
-        uses: powerops-mk/replace-action@main
+        uses: powerops-mk/replace-action@50d408aecbd222c2398d63949d8bf960fa259177 # main
         id: replace
         with:
           path: "Test"
