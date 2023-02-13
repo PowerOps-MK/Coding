@@ -1,3 +1,0 @@
-Spotipy
-flake8
-pytest
