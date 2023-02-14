@@ -18,6 +18,11 @@ concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
 
+# Set environment variables
+env:
+  # Use folder for Python app
+  FOLDER: ./Python/xata
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # Test the configuration (YAML) files 
@@ -27,7 +32,7 @@ jobs:
     # Setup defaults for the steps within a job
     defaults:
       run:
-        working-directory: ./Python
+        working-directory: ${{ env.FOLDER }}
 
     # Setup matrix for OS and Python
     strategy:
@@ -39,7 +44,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c #v3.3.0
 
       # Install Python from matrix  
       - name: Install Python
