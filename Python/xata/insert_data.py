@@ -1,4 +1,5 @@
 from faker import Faker
+
 # from xata import XataClient
 
 # Create faker object
