@@ -13,9 +13,9 @@ args = parser.parse_args()
 api_url = "https://sifon-lade-0z-s-workspace-h9pso8.eu-west-1.xata.sh/db/powerops-db"
 branch = "main"
 table = "Posts"
+label = "Python"
 
-
-# Create a Dutch faker object
+# Create a faker object
 fake = Faker()
 
 # Creata Xata client xau_nc9NKeXvgvHuS1AoR5NOwIyWMuPc2XUc7
@@ -26,12 +26,16 @@ client = XataClient(
 )
 
 # Creata a record in db
-client.create(table, record={"title": fake.text(), "slug": fake.text()})
+title = fake.text(max_nb_chars=5)
+client.create(table, record={
+    "title": title,
+    "labels": label,
+    "slug": fake.text(),
+    "text": fake.text(),
+    "createdAt": fake.date_time(),
+    "views": fake.random_int(),
+})
 
 # Get one record from db
-post = client.get_first(table, filter={"slug": "often-panel-northwest-markets-indiana-volkswagen"})
+post = client.get_first(table, filter={"title": title})
 print(post)
-
-# Query a db
-# page = client.query("Posts", filter={"title": "Hello World"})
-# print(page.get("records"))
