@@ -11,5 +11,5 @@ client = XataClient(
    branch_name="main"
 )
 
-resp = client.query("emails", page=dict(size=200))
+resp = client.query("Posts", page=dict(size=2))
 print(resp)
