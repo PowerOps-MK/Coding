@@ -26,7 +26,7 @@ client = XataClient(
 )
 
 # Creata a record in db
-title = f"fake.image_url() fake.text(max_nb_chars=20)"
+title = f"{fake.image_url()} {fake.text(max_nb_chars=20)}"
 client.create(table, record={
     "title": title, 
     "labels": labels, 
