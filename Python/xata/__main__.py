@@ -14,9 +14,9 @@ fake = Faker()
 
 # Creata Xata client xau_nc9NKeXvgvHuS1AoR5NOwIyWMuPc2XUc7
 client = XataClient(
-   api_key=args.key,
-   db_url="https://sifon-lade-0z-s-workspace-h9pso8.eu-west-1.xata.sh/db/powerops-db",
-   branch_name="main"
+    api_key=args.key,
+    db_url="https://sifon-lade-0z-s-workspace-h9pso8.eu-west-1.xata.sh/db/powerops-db",
+    branch_name="main"
 )
 
 resp = client.query("Posts", page=dict(size=2))
