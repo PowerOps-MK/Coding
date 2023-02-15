@@ -9,6 +9,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--key")
 args = parser.parse_args()
 
+# Parameters
+table = "Posts"
+
 # Create faker object
 fake = Faker()
 
@@ -16,8 +19,10 @@ fake = Faker()
 client = XataClient(
     api_key=args.key,
     db_url="https://sifon-lade-0z-s-workspace-h9pso8.eu-west-1.xata.sh/db/powerops-db",
-    branch_name="main"
+    branch_name="main",
 )
 
-resp = client.query("Posts", page=dict(size=2))
-print(resp)
+# Get data from db
+data = client.query(table, page=dict(size=2))
+
+# Insert data into db
