@@ -5,8 +5,11 @@ from xata import XataClient
 fake = Faker()
 
 # Creata Xata client
-client = XataClient(api_key="xau_nc9NKeXvgvHuS1AoR5NOwIyWMuPc2XUc7", db_url="https://sifon-lade-0z-s-workspace-h9pso8.eu-west-1.xata.sh/db/powerops-db:main")
-print(client)
+client = XataClient(
+   api_key="xau_nc9NKeXvgvHuS1AoR5NOwIyWMuPc2XUc7", 
+   db_url="https://sifon-lade-0z-s-workspace-h9pso8.eu-west-1.xata.sh/db/powerops-db", 
+   branch_name="main"
+)
 
-name = fake.name()
-print(name)
+resp = client.query("emails", page=dict(size=200))
+print(resp)
