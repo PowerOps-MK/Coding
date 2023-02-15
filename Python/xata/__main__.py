@@ -1,12 +1,20 @@
+# Modules
+import argparse
+
 from faker import Faker
 from xata import XataClient
+
+# Arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("--key")
+args = parser.parse_args()
 
 # Create faker object
 fake = Faker()
 
-# Creata Xata client
+# Creata Xata client xau_nc9NKeXvgvHuS1AoR5NOwIyWMuPc2XUc7
 client = XataClient(
-   api_key="xau_nc9NKeXvgvHuS1AoR5NOwIyWMuPc2XUc7",
+   api_key=args.key,
    db_url="https://sifon-lade-0z-s-workspace-h9pso8.eu-west-1.xata.sh/db/powerops-db",
    branch_name="main"
 )
