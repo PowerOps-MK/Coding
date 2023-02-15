@@ -28,7 +28,8 @@ client = XataClient(
 # Creata a record in db
 # client.create(table, record={"title": "Hello World", "slug": "hello-world"})
 
-print(faker.name)
+print(fake.name())
+
 # Get one record from db
 post = client.get_first(table, filter={"slug": "often-panel-northwest-markets-indiana-volkswagen"})
 print(post)
