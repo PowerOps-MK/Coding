@@ -28,7 +28,6 @@ client = XataClient(
 
 # Creata a record in db
 title = f"🙈 {fake.text(max_nb_chars=20)}"
-date = f"{fake.date_time()}"
 
 client.create(
     table,
@@ -38,7 +37,6 @@ client.create(
         "slug": fake.text(),
         "text": fake.text(),
         "author": author,
-        "createdAt": date,
         "views": fake.random_int(),
     },
 )
