@@ -16,7 +16,7 @@ table = "Posts"
 
 
 # Create a Dutch faker object
-fake = Faker("nl-NL")
+fake = Faker()
 
 # Creata Xata client xau_nc9NKeXvgvHuS1AoR5NOwIyWMuPc2XUc7
 client = XataClient(
@@ -26,9 +26,7 @@ client = XataClient(
 )
 
 # Creata a record in db
-# client.create(table, record={"title": "Hello World", "slug": "hello-world"})
-
-print(fake.name())
+client.create(table, record={"title": fake.text(), "slug": fake.text()})
 
 # Get one record from db
 post = client.get_first(table, filter={"slug": "often-panel-northwest-markets-indiana-volkswagen"})
