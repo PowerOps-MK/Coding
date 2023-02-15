@@ -27,7 +27,7 @@ client = XataClient(
 
 # Creata a record in db
 title = fake.text(max_nb_chars=5)
-client.create(table, record={"title": title, "labels": label, "slug": fake.text(), "text": fake.text(), "createdAt": fake.date_time(), "views": fake.random_int()})
+client.create(table, record={"title": title, "labels": label, "slug": fake.text(), "text": fake.text(), "views": fake.random_int()})
 
 # Get one record from db
 post = client.get_first(table, filter={"title": title})
