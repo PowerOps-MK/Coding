@@ -27,12 +27,13 @@ client = XataClient(
 
 # Creata a record in db
 title = f"🙈 {fake.text(max_nb_chars=20)}"
-client.create(table, 
+client.create(
+    table,
     record={
-        "title": title, 
-        "labels": labels, 
-        "slug": fake.text(), 
-        "text": fake.text(), 
+        "title": title,
+        "labels": labels,
+        "slug": fake.text(),
+        "text": fake.text(),
         "views": fake.random_int(),
     },
 )
