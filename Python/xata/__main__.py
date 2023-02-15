@@ -35,7 +35,7 @@ client.create(
         "labels": labels,
         "slug": fake.text(),
         "text": fake.text(),
-        "Author.id": author,
+        "author": author,
         "views": fake.random_int(),
     },
 )
