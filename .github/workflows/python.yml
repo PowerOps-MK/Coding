@@ -63,4 +63,4 @@ jobs:
           python -m pip install -r ./requirements.txt
 
       - name: Run script
-        run: python ./__main__.py
+        run: python ./__main__.py --key ${{ secrets.XATA_KEY }}
