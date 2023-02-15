@@ -14,6 +14,7 @@ api_url = "https://sifon-lade-0z-s-workspace-h9pso8.eu-west-1.xata.sh/db/powerop
 branch = "main"
 table = "Posts"
 labels = ["Python"]
+author = "arden"
 
 # Create a faker object
 fake = Faker()
@@ -34,6 +35,7 @@ client.create(
         "labels": labels,
         "slug": fake.text(),
         "text": fake.text(),
+        "Author.id": author,
         "views": fake.random_int(),
     },
 )
