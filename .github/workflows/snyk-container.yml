@@ -43,7 +43,7 @@ jobs:
     steps:
     - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c #v3.3.0
     - name: Build a Docker image
-      run: docker build -t ${{ env.APP }} .
+      run: docker build ${{ env.APP }} .
     - name: Run Snyk to check Docker image for vulnerabilities
       # Snyk can be used to break the build when it detects vulnerabilities.
       # In this case we want to upload the issues to GitHub Code Scanning
