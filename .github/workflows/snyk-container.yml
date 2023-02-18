@@ -28,7 +28,7 @@ on:
 
 env:
   # Name of the app
-  APP: ./Docker/reactjs
+  APP: ./Docker/python
 
 permissions:
   contents: read
