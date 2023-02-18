@@ -26,6 +26,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  # Name of the app
+  APP: Docker/reactjs
+
 permissions:
   contents: read
 
