@@ -3,7 +3,7 @@ FROM python@sha256:a5b723f5b78cb73300b647ff49fba4ceea22c5ec68c547fa3291978e6b692
 
 # Setup nonroot user
 RUN addgroup nonroot \
-    && adduser nonroot -G nonroot
+    && adduser nonroot --group nonroot
 
 # Use created user
 USER nonroot
