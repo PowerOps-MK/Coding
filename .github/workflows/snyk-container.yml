@@ -17,7 +17,7 @@ name: Snyk Container
 on:
   push:
     branches: [master, main]
-    paths:
+  #  paths:
    #   - "Docker/**"
    
   # Allows you to run this workflow manually from the Actions tab
@@ -27,7 +27,7 @@ env:
   # Path of the app
   IMAGE_PATH: Docker
   # Name of the app
-  IMAGE_NAME: python
+  IMAGE_NAME: angular
 
 permissions:
   contents: read
