@@ -18,16 +18,16 @@ on:
   push:
     branches: [master, main]
     paths:
-      - "Docker/**"
+   #   - "Docker/**"
    
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: nginx
-  # Name of the app
+  # Path of the app
   IMAGE_PATH: Docker
+  # Name of the app
+  IMAGE_NAME: python
 
 permissions:
   contents: read
