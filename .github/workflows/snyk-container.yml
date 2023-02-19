@@ -23,6 +23,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: nginx
+  # Name of the app
+  IMAGE_PATH: Docker
+
 permissions:
   contents: read
 
@@ -36,7 +42,7 @@ jobs:
     - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c #v3.3.0
 
     - name: Build a Docker image
-      run: docker build -t nginx ./Docker/nginx
+      run: docker build -t ${{ env.IMAGE_NAME }} ${{ env.IMAGE_PATH }}/${{ env.IMAGE_NAME }}
 
     - name: Run Snyk to check Docker image for vulnerabilities
       # Snyk can be used to break the build when it detects vulnerabilities.
@@ -49,6 +55,6 @@ jobs:
         # or you can signup for free at https://snyk.io/login
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        image: nginx
+        image: ${{ env.IMAGE_NAME }}
         command: monitor
-        args: --file=Docker/nginx/Dockerfile
+        args: --file=${{ env.IMAGE_PATH }}/${{ env.IMAGE_NAME }}/Dockerfile
