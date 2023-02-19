@@ -51,7 +51,7 @@ jobs:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
         image: nginx
-        args: --file=Docker/nginx/Dockerfile --severity-threshold=critical --report
+        args: --file=Docker/nginx/Dockerfile --severity-threshold=high --report
 
     - name: Upload result to GitHub Code Scanning
       uses: github/codeql-action/upload-sarif@17573ee1cc1b9d061760f3a006fc4aac4f944fd5 #v2.2.4
