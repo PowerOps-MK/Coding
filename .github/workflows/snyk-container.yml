@@ -27,7 +27,7 @@ env:
   # Path of the app
   IMAGE_PATH: Docker
   # Name of the app
-  IMAGE_NAME: reactjs
+  IMAGE_NAME: rust
 
 permissions:
   contents: read
