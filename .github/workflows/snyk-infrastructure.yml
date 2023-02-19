@@ -18,6 +18,7 @@ on:
     branches: [master, main]
     paths:
       - "ARM/**"
+      - "Terraform/**"
    
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
