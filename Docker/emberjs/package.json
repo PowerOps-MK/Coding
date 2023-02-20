@@ -1,9 +1,0 @@
-{
-  "name": "my-app",
-  "version": "5.0.0",
-  "homepage": "https://powerops-mk.github.io/react-gh-pages",
-  "private": true,
-  "dependencies": {
-    "ember-cli": "^4.9.2"
-  }
-}
