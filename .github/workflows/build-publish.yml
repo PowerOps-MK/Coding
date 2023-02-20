@@ -26,7 +26,7 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
   # Name of the app
-  APP: reactjs
+  APP: emberjs
 
 # Permissions needed to run the workflow (top level)
 permissions:
