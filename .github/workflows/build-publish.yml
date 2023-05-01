@@ -136,7 +136,7 @@ jobs:
     
       # Call API to start redeploy
       - name: Redeploy
-        uses: distributhor/workflow-webhook@48a40b380ce4593b6a6676528cd005986ae56629 #v3.0.3
+        uses: distributhor/workflow-webhook@c8c8db2b54f2cd05e2d6b9925fd9aa21547a02bd #v3.0.4
         env:
           webhook_url: ${{ secrets.RENDER_URL }}
           webhook_secret: "fP"
