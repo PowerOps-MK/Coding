@@ -1,5 +1,5 @@
 # Specify the base image nginx:1.23-alpine
-FROM nginx@sha256:63b44e8ddb83d5dd8020327c1f40436e37a6fffd3ef2498a6204df23be6e7e94
+FROM nginx@sha256:480868e8c8c797794257e2abd88d0f9a8809b2fe956cbfbc05dcc0bca1f7cd43
 
 # Create a working directory inside the image
 WORKDIR /usr/share/nginx
