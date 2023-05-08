@@ -1,7 +1,7 @@
 # apache2
 # libapache2-mod-wsgi-py3
 asgiref==3.6.0
-Django==4.2
+Django==4.2.1
 django-cors-headers==3.14.0
 djangorestframework==3.14.0
 pyasn1==0.5.0
