@@ -49,4 +49,14 @@ jobs:
       # Approve the Github pull request  
       - name: Approve
         run: |
-          echo "This PR is not from Dependabot. Skipping auto-approval."
+          PR_AUTHOR=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}" | jq -r '.user.login')
+
+          if [[ "$PR_AUTHOR" == "dependabot[bot]" ]]; then
+            echo "This PR is from Dependabot. Auto-approving..."
+            curl -s -X PUT -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews" \
+              -d '{"event": "APPROVE"}'
+          else
+            echo "This PR is not from Dependabot. Skipping auto-approval."
+          fi
