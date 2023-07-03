@@ -58,5 +58,5 @@ jobs:
               "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews" \
               -d '{"event": "APPROVE"}'
           else
-            echo "This PR is not from Dependabot. Skipping auto-approval."
+            echo "This PR is from $PR_AUTHOR. Skipping auto-approval."
           fi
