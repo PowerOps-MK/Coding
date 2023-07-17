@@ -1,5 +1,5 @@
 # Specify the base image python:3.11-slim
-FROM python@sha256:fe68f3194a1a6df058901085495abca83d8841415101366c3a4c66f06f39760a
+FROM python@sha256:d73088ce13d5a1eec1dd05b47736041ae6921d08d2f240035d99642db98bc8d4
 
 # Setup nonroot user
 RUN adduser nonroot
