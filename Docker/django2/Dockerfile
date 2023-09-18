@@ -1,5 +1,5 @@
 # Specify the base image python:3.7.3-slim
-FROM python@sha256:fe68f3194a1a6df058901085495abca83d8841415101366c3a4c66f06f39760a
+FROM python@sha256:cc7372fe4746ca323f18c6bd0d45dadf22d192756abc5f73e39f9c7f10cba5aa
 
 # Setup environment variable  
 ENV PYTHONDONTWRITEBYTECODE=1
