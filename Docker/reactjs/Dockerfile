@@ -1,5 +1,5 @@
 # Specify the base image Node:19
-FROM node@sha256:2f0b0c15f97441defa812268ee943bbfaaf666ea6cf7cac62ee3f127906b35c6
+FROM node@sha256:191b360003a7458df0f14bbc0aa1d298a706e32786e1830191036971eb1547a2
 
 # Create a working directory inside the image
 WORKDIR /app
