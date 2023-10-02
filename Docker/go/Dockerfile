@@ -1,5 +1,5 @@
 # Specify the base image golang:1.19-alpine
-FROM golang@sha256:344193a70dc3588452ea39b4a1e465a8d3c91f788ae053f7ee168cebf18e0a50
+FROM golang@sha256:19600fdcae402165dcdab18cb9649540bde6be7274dedb5d205b2f84029fe909
 
 # Create a working directory inside the image
 WORKDIR /app
